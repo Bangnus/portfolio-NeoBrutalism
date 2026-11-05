@@ -22,6 +22,7 @@ export interface ProjectItem {
   repoUrl: string;
   architectureNotes: string[];
   featured?: boolean;
+  thumbnailUrl?: string;
 }
 
 export interface TechCategory {

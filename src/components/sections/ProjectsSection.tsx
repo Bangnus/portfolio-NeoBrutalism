@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowUpRight, Code2, ExternalLink } from "lucide-react";
+import React from "react";
+import { ArrowUpRight, Code2, ExternalLink, Briefcase } from "lucide-react";
 import { PORTFOLIO_DATA, ProjectItem } from "@/data/portfolio";
 import { SwarmBuildBlock } from "../swarm/SwarmBuildBlock";
 
@@ -11,17 +11,6 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
   const { projects } = PORTFOLIO_DATA;
-  const [activeCategory, setActiveCategory] = useState<string>("ALL");
-
-  const categories = [
-    "ALL",
-    ...Array.from(new Set(projects.map((p) => p.category.split(" / ")[0]))),
-  ];
-
-  const filteredProjects =
-    activeCategory === "ALL"
-      ? projects
-      : projects.filter((p) => p.category.startsWith(activeCategory));
 
   return (
     <section id="projects" className="scroll-mt-24">
@@ -34,43 +23,30 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#FDE047] border border-zinc-900 shadow-[2px_2px_0px_#18181b] font-mono text-xs font-bold uppercase mb-2.5">
               <Code2 className="w-3.5 h-3.5" />
-              <span>02 // SELECTED PRODUCTION WORKS</span>
+              <span>02 // SELECTED PRODUCTION PLATFORMS</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
-              Featured Projects & Tooling
+              Production Works & Freelance Services
             </h2>
           </div>
 
-          <div
-            className="flex flex-wrap items-center gap-2"
-            data-interactive="true"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`brutal-btn px-3 py-1.5 rounded-md font-mono text-xs font-bold uppercase cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-zinc-950 text-[#FDE047]"
-                    : "bg-white text-zinc-800"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="flex items-center gap-2 font-mono text-xs font-bold">
+            <span className="px-3 py-1.5 rounded-md bg-[#FDE047] border border-zinc-900 shadow-[1.5px_1.5px_0px_#18181b] text-zinc-950 uppercase flex items-center gap-1.5">
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>2 Verified Platforms</span>
+            </span>
           </div>
         </div>
       </SwarmBuildBlock>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-7">
-        {filteredProjects.map((project, idx) => (
+        {projects.map((project, idx) => (
           <SwarmBuildBlock
             key={project.id}
             id={`project-card-${project.id}`}
             label={`PROJECT // ${project.id.toUpperCase()}`}
             accentColor="#FDE047"
-            delayMs={idx * 100}
+            delayMs={idx * 120}
           >
             <article
               onClick={() => onSelectProject(project)}
@@ -133,22 +109,26 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                     className="flex items-center gap-2"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="brutal-btn p-1.5 rounded-md bg-white text-zinc-900"
-                      title="GitHub Repository"
-                    >
-                      <Code2 className="w-3.5 h-3.5" />
-                    </a>
+                    {project.repoUrl?.includes("works") && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="brutal-btn inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-white font-mono text-xs font-bold text-zinc-900"
+                        title="View Works Inside"
+                      >
+                        <span>Works</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="brutal-btn p-1.5 rounded-md bg-[#FDE047] text-zinc-900"
-                      title="Live Deployment"
+                      className="brutal-btn inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-[#FDE047] font-mono text-xs font-bold text-zinc-900"
+                      title="Visit Platform"
                     >
+                      <span>{project.id === "proj-tumweb" ? "Visit Site" : "Fastwork"}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>

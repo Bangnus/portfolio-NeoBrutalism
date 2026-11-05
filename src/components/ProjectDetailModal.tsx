@@ -136,25 +136,38 @@ export function ProjectDetailModal({
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3.5 border-t-2 border-zinc-900">
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2">
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="brutal-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md bg-[#FDE047] font-mono text-xs font-bold text-zinc-900 uppercase"
+              className="brutal-btn inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-[#FDE047] font-mono text-xs font-bold text-zinc-900 uppercase"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              <span>Live Demo</span>
+              <span>Visit Live</span>
             </a>
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="brutal-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md bg-white font-mono text-xs font-bold text-zinc-900 uppercase"
-            >
-              <Code2 className="w-3.5 h-3.5" />
-              <span>GitHub</span>
-            </a>
+            {project.repoUrl?.includes("works") && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brutal-btn inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-white font-mono text-xs font-bold text-zinc-900 uppercase"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Client Works</span>
+              </a>
+            )}
+            {project.repoUrl?.includes("github.com") && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brutal-btn inline-flex items-center gap-1.5 px-3 py-2 rounded-md bg-white font-mono text-xs font-bold text-zinc-900 uppercase"
+              >
+                <Code2 className="w-3.5 h-3.5" />
+                <span>GitHub</span>
+              </a>
+            )}
           </div>
 
           <button
