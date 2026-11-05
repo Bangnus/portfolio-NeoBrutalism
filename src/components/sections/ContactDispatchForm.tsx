@@ -8,7 +8,7 @@ export function ContactDispatchForm() {
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
-    projectType: "Full-Stack Next.js Platform",
+    projectType: "Full-Stack Web Platform",
     message: "",
   });
 
@@ -19,7 +19,7 @@ export function ContactDispatchForm() {
       setContactForm({
         name: "",
         email: "",
-        projectType: "Full-Stack Next.js Platform",
+        projectType: "Full-Stack Web Platform",
         message: "",
       });
     }, 400);
@@ -27,24 +27,25 @@ export function ContactDispatchForm() {
 
   return (
     <div
-      className="h-full rounded-2xl bg-white brutal-card p-7"
+      className="h-full rounded-xl bg-white brutal-card p-6 sm:p-7"
       data-interactive="true"
     >
       {contactSubmitted ? (
-        <div className="h-full min-h-[280px] flex flex-col items-center justify-center text-center p-6">
-          <div className="w-14 h-14 rounded-xl bg-[#4ADE80] border-[2.5px] border-zinc-950 shadow-[4px_4px_0px_#09090b] flex items-center justify-center text-zinc-950 mb-4">
-            <CheckCircle2 className="w-7 h-7" />
+        <div className="h-full min-h-[260px] flex flex-col items-center justify-center text-center p-6">
+          <div className="w-12 h-12 rounded-lg bg-[#FDE047] border-2 border-zinc-900 shadow-[3px_3px_0px_#18181b] flex items-center justify-center text-zinc-950 mb-3.5">
+            <CheckCircle2 className="w-6 h-6" />
           </div>
-          <h3 className="text-2xl font-black text-zinc-950 mb-2">
-            Message Sent!
+          <h3 className="text-xl font-bold text-zinc-950 mb-1.5">
+            Message Sent Successfully
           </h3>
-          <p className="text-sm font-medium text-zinc-700 max-w-md mb-6">
-            Thank you for reaching out. Peerapat will get back to you shortly.
+          <p className="text-sm text-zinc-600 max-w-sm mb-5">
+            Thank you for reaching out. Peerapat will review your message and
+            respond shortly.
           </p>
           <button
             type="button"
             onClick={() => setContactSubmitted(false)}
-            className="brutal-btn px-4 py-2 rounded-xl bg-[#FDE047] font-mono text-xs font-black text-zinc-950 cursor-pointer"
+            className="brutal-btn px-4 py-2 rounded-md bg-[#FDE047] font-mono text-xs font-bold text-zinc-900 cursor-pointer"
           >
             Send Another Message
           </button>
@@ -53,7 +54,7 @@ export function ContactDispatchForm() {
         <form onSubmit={handleContactSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-mono text-xs font-black text-zinc-950 uppercase mb-1.5">
+              <label className="block font-mono text-xs font-bold text-zinc-800 uppercase mb-1.5">
                 Your Name
               </label>
               <input
@@ -64,11 +65,11 @@ export function ContactDispatchForm() {
                   setContactForm({ ...contactForm, name: e.target.value })
                 }
                 placeholder="Alex Mercer"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF7] border-[2.5px] border-zinc-950 shadow-[3px_3px_0px_#09090b] focus:bg-[#FEF9C3] focus:outline-none text-sm font-mono font-bold text-zinc-950"
+                className="w-full px-3 py-2 rounded-lg bg-[#FAF8F5] border border-zinc-900 shadow-[2px_2px_0px_#18181b] focus:bg-white focus:outline-none text-sm font-medium text-zinc-900"
               />
             </div>
             <div>
-              <label className="block font-mono text-xs font-black text-zinc-950 uppercase mb-1.5">
+              <label className="block font-mono text-xs font-bold text-zinc-800 uppercase mb-1.5">
                 Your Email
               </label>
               <input
@@ -79,13 +80,13 @@ export function ContactDispatchForm() {
                   setContactForm({ ...contactForm, email: e.target.value })
                 }
                 placeholder="alex@studio.dev"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF7] border-[2.5px] border-zinc-950 shadow-[3px_3px_0px_#09090b] focus:bg-[#FEF9C3] focus:outline-none text-sm font-mono font-bold text-zinc-950"
+                className="w-full px-3 py-2 rounded-lg bg-[#FAF8F5] border border-zinc-900 shadow-[2px_2px_0px_#18181b] focus:bg-white focus:outline-none text-sm font-medium text-zinc-900"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-mono text-xs font-black text-zinc-950 uppercase mb-1.5">
+            <label className="block font-mono text-xs font-bold text-zinc-800 uppercase mb-1.5">
               Project Scope
             </label>
             <select
@@ -93,17 +94,17 @@ export function ContactDispatchForm() {
               onChange={(e) =>
                 setContactForm({ ...contactForm, projectType: e.target.value })
               }
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF7] border-[2.5px] border-zinc-950 shadow-[3px_3px_0px_#09090b] focus:outline-none text-sm font-mono font-bold text-zinc-950"
+              className="w-full px-3 py-2 rounded-lg bg-[#FAF8F5] border border-zinc-900 shadow-[2px_2px_0px_#18181b] focus:bg-white focus:outline-none text-sm font-medium text-zinc-900 cursor-pointer"
             >
-              <option>Full-Stack Next.js Platform</option>
-              <option>Interactive Neo-Brutalist Web App</option>
-              <option>Design System & UI Engineering</option>
-              <option>Full-Stack / Creative Dev Role</option>
+              <option>Full-Stack Web Platform</option>
+              <option>Frontend / Next.js Development</option>
+              <option>Interactive UI & Web App</option>
+              <option>Full-Stack Engineering Role</option>
             </select>
           </div>
 
           <div>
-            <label className="block font-mono text-xs font-black text-zinc-950 uppercase mb-1.5">
+            <label className="block font-mono text-xs font-bold text-zinc-800 uppercase mb-1.5">
               Message
             </label>
             <textarea
@@ -113,14 +114,14 @@ export function ContactDispatchForm() {
               onChange={(e) =>
                 setContactForm({ ...contactForm, message: e.target.value })
               }
-              placeholder="Tell me about your project or opportunity..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#FFFDF7] border-[2.5px] border-zinc-950 shadow-[3px_3px_0px_#09090b] focus:bg-[#FEF9C3] focus:outline-none text-sm font-mono font-bold text-zinc-950 resize-none"
+              placeholder="Tell me about your project, timeline, or opportunity..."
+              className="w-full px-3 py-2 rounded-lg bg-[#FAF8F5] border border-zinc-900 shadow-[2px_2px_0px_#18181b] focus:bg-white focus:outline-none text-sm font-medium text-zinc-900 resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="brutal-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#4ADE80] text-zinc-950 font-mono text-xs font-black uppercase tracking-wider cursor-pointer"
+            className="brutal-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#FDE047] text-zinc-900 font-mono text-xs font-bold uppercase cursor-pointer"
           >
             <Send className="w-3.5 h-3.5" />
             <span>Send Message</span>
@@ -130,4 +131,3 @@ export function ContactDispatchForm() {
     </div>
   );
 }
-

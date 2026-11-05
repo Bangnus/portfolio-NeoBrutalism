@@ -23,23 +23,21 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
       ? projects
       : projects.filter((p) => p.category.startsWith(activeCategory));
 
-  const cardBgs = ["#FFFFFF", "#FEF9C3", "#E0F2FE", "#FCE7F3"];
-
   return (
     <section id="projects" className="scroll-mt-24">
       <SwarmBuildBlock
         id="projects-header-frame"
         label="SECTION_02 // WORKS"
-        accentColor="#38BDF8"
+        accentColor="#FDE047"
       >
-        <div className="rounded-2xl bg-[#38BDF8] brutal-card p-6 sm:p-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="rounded-xl bg-white brutal-card p-6 sm:p-7 flex flex-col md:flex-row md:items-end justify-between gap-5">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-zinc-950 shadow-[2px_2px_0px_#09090b] font-mono text-xs font-black uppercase mb-3">
-              <Code2 className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#FDE047] border border-zinc-900 shadow-[2px_2px_0px_#18181b] font-mono text-xs font-bold uppercase mb-2.5">
+              <Code2 className="w-3.5 h-3.5" />
               <span>02 // SELECTED PRODUCTION WORKS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-zinc-950 tracking-tight">
-              Featured Projects & Interactive Engines
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+              Featured Projects & Tooling
             </h2>
           </div>
 
@@ -52,10 +50,10 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`brutal-btn px-3.5 py-1.5 rounded-lg font-mono text-xs font-black uppercase cursor-pointer ${
+                className={`brutal-btn px-3 py-1.5 rounded-md font-mono text-xs font-bold uppercase cursor-pointer ${
                   activeCategory === cat
                     ? "bg-zinc-950 text-[#FDE047]"
-                    : "bg-white text-zinc-950"
+                    : "bg-white text-zinc-800"
                 }`}
               >
                 {cat}
@@ -65,105 +63,100 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
         </div>
       </SwarmBuildBlock>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-8">
-        {filteredProjects.map((project, idx) => {
-          const cardBg = cardBgs[idx % cardBgs.length];
-          return (
-            <SwarmBuildBlock
-              key={project.id}
-              id={`project-card-${project.id}`}
-              label={`PROJECT // ${project.id.toUpperCase()}`}
-              accentColor={project.accentColor}
-              delayMs={idx * 110}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-7">
+        {filteredProjects.map((project, idx) => (
+          <SwarmBuildBlock
+            key={project.id}
+            id={`project-card-${project.id}`}
+            label={`PROJECT // ${project.id.toUpperCase()}`}
+            accentColor="#FDE047"
+            delayMs={idx * 100}
+          >
+            <article
+              onClick={() => onSelectProject(project)}
+              data-interactive="true"
+              className="group h-full rounded-xl bg-white brutal-card brutal-card-hover p-6 sm:p-7 flex flex-col justify-between cursor-pointer"
             >
-              <article
-                onClick={() => onSelectProject(project)}
-                data-interactive="true"
-                style={{ backgroundColor: cardBg }}
-                className="group h-full rounded-2xl brutal-card brutal-card-hover p-6 sm:p-7 flex flex-col justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 font-mono text-xs mb-4">
-                    <span className="px-3 py-1 rounded-md bg-zinc-950 text-white font-black uppercase">
-                      {project.category}
-                    </span>
-                    <span className="px-2.5 py-1 bg-[#FDE047] border-2 border-zinc-950 font-black text-zinc-950 shadow-[2px_2px_0px_#09090b]">
-                      {project.year}
-                    </span>
-                  </div>
+              <div>
+                <div className="flex items-center justify-between gap-2 font-mono text-xs mb-3.5">
+                  <span className="px-2.5 py-0.5 rounded bg-zinc-100 border border-zinc-800 text-zinc-900 font-bold uppercase text-[11px]">
+                    {project.category}
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#FDE047] border border-zinc-900 font-bold text-zinc-900 shadow-[1.5px_1.5px_0px_#18181b] text-[11px]">
+                    {project.year}
+                  </span>
+                </div>
 
-                  {/* Neo-Brutalist Metrics Banner */}
-                  <div className="grid grid-cols-3 gap-2.5 mb-5 p-3 rounded-xl bg-white border-[2.5px] border-zinc-950 shadow-[3px_3px_0px_#09090b]">
-                    {project.metrics.map((m) => (
-                      <div key={m.label} className="px-1">
-                        <div className="font-mono text-[10px] font-bold text-zinc-600 uppercase truncate">
-                          {m.label}
-                        </div>
-                        <div className="font-mono text-xs sm:text-sm font-black text-zinc-950 truncate">
-                          {m.value}
-                        </div>
+                <div className="grid grid-cols-3 gap-2 mb-4 p-3 rounded-lg bg-[#FAF8F5] border border-zinc-900">
+                  {project.metrics.map((m) => (
+                    <div key={m.label} className="px-1">
+                      <div className="font-mono text-[10px] font-medium text-zinc-500 uppercase truncate">
+                        {m.label}
                       </div>
-                    ))}
-                  </div>
-
-                  <h3 className="text-2xl font-black text-zinc-950 mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="font-mono text-xs font-bold text-zinc-700 mb-3">
-                    {project.subtitle}
-                  </p>
-                  <p className="text-sm text-zinc-800 font-medium leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2.5 py-1 rounded-md bg-white border-2 border-zinc-950 font-mono text-xs font-bold text-zinc-950 shadow-[2px_2px_0px_#09090b]"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="pt-4 border-t-[2.5px] border-zinc-950 flex items-center justify-between font-mono text-xs">
-                    <span className="inline-flex items-center gap-1.5 font-black text-zinc-950 uppercase group-hover:underline">
-                      <span>Inspect Spec Sheet</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </span>
-
-                    <div
-                      className="flex items-center gap-2"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <a
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="brutal-btn p-2 rounded-lg bg-white text-zinc-950"
-                        title="GitHub Repository"
-                      >
-                        <Code2 className="w-4 h-4" />
-                      </a>
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="brutal-btn p-2 rounded-lg bg-[#4ADE80] text-zinc-950"
-                        title="Live Deployment"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
+                      <div className="font-mono text-xs sm:text-sm font-bold text-zinc-950 truncate mt-0.5">
+                        {m.value}
+                      </div>
                     </div>
+                  ))}
+                </div>
+
+                <h3 className="text-xl font-bold text-zinc-950 mb-1 group-hover:text-amber-600 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="font-mono text-xs text-zinc-500 mb-3">
+                  {project.subtitle}
+                </p>
+                <p className="text-sm text-zinc-600 leading-relaxed mb-5">
+                  {project.description}
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 rounded bg-zinc-50 border border-zinc-800 font-mono text-[11px] font-semibold text-zinc-800"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-3.5 border-t-2 border-zinc-900 flex items-center justify-between font-mono text-xs">
+                  <span className="inline-flex items-center gap-1 font-bold text-zinc-950 uppercase group-hover:underline">
+                    <span>Inspect Spec</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+
+                  <div
+                    className="flex items-center gap-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal-btn p-1.5 rounded-md bg-white text-zinc-900"
+                      title="GitHub Repository"
+                    >
+                      <Code2 className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal-btn p-1.5 rounded-md bg-[#FDE047] text-zinc-900"
+                      title="Live Deployment"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
-              </article>
-            </SwarmBuildBlock>
-          );
-        })}
+              </div>
+            </article>
+          </SwarmBuildBlock>
+        ))}
       </div>
     </section>
   );

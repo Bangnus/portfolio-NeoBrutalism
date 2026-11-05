@@ -1,14 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  ArrowUpRight,
-  Sparkles,
-  RotateCcw,
-  Scan,
-  Code2,
-  Globe,
-} from "lucide-react";
+import { ArrowUpRight, Sparkles, RotateCcw, Scan, Code2, Globe } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
 import { SwarmBuildBlock } from "../swarm/SwarmBuildBlock";
 import { useSwarm } from "../swarm/SwarmContext";
@@ -19,76 +12,64 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="scroll-mt-24">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         <SwarmBuildBlock
           id="hero-main-frame"
           label="HERO_PRIMARY_FRAME"
           accentColor="#FDE047"
           autoBuildOnMount={true}
-          delayMs={260}
+          delayMs={220}
           className="lg:col-span-8"
         >
-          <div className="h-full rounded-2xl bg-white brutal-card p-7 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+          <div className="h-full rounded-xl bg-white brutal-card p-6 sm:p-9 flex flex-col justify-between">
             <div>
-              <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 bg-[#4ADE80] border-2 border-zinc-950 shadow-[3px_3px_0px_#09090b] font-mono text-xs font-black text-zinc-950 uppercase mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FDE047] border border-zinc-900 shadow-[2px_2px_0px_#18181b] font-mono text-xs font-bold text-zinc-900 uppercase mb-5">
+                <Sparkles className="w-3.5 h-3.5 text-zinc-900" />
                 <span>{profile.availability}</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-zinc-950 leading-[1.05] mb-5">
-                {profile.name}
-                <span className="block mt-2">
-                  <span className="inline-block bg-[#FDE047] px-3 py-1 border-[3px] border-zinc-950 shadow-[5px_5px_0px_#09090b]">
-                    Creative Full-Stack
-                  </span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
+                Hi, I&apos;m {profile.name}
+                <span className="block text-zinc-700 text-2xl sm:text-3xl font-bold mt-1.5">
+                  Creative Full-Stack Developer
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-zinc-800 font-medium max-w-2xl leading-relaxed mb-8">
-                {profile.tagline} Engineered with{" "}
-                <span className="font-mono font-black underline decoration-[3px] decoration-[#FF5E5B]">
-                  Next.js
-                </span>
-                ,{" "}
-                <span className="font-mono font-black underline decoration-[3px] decoration-[#10B981]">
-                  TypeScript
-                </span>
-                , and{" "}
-                <span className="font-mono font-black underline decoration-[3px] decoration-[#3B82F6]">
-                  Neo-Brutalist Systems
-                </span>
-                .
+              <p className="text-base text-zinc-600 leading-relaxed max-w-2xl mb-7">
+                {profile.tagline} Built using clean Next.js architecture,
+                TypeScript, and tactile Neo-Brutalist components constructed live
+                by the swarm cursor.
               </p>
             </div>
 
             <div
-              className="flex flex-wrap items-center gap-3 pt-5 border-t-[3px] border-zinc-950"
+              className="flex flex-wrap items-center gap-3 pt-5 border-t-2 border-zinc-900"
               data-interactive="true"
             >
               <a
                 href="#projects"
-                className="brutal-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#FF5E5B] text-white font-mono text-xs font-black tracking-wider uppercase"
+                className="brutal-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-950 text-white font-mono text-xs font-bold uppercase"
               >
-                <span>View Projects</span>
+                <span>View Works</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
 
               <button
                 type="button"
                 onClick={rebuildAll}
-                className="brutal-btn inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#FDE047] text-zinc-950 font-mono text-xs font-black uppercase cursor-pointer"
+                className="brutal-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#FDE047] text-zinc-950 font-mono text-xs font-bold uppercase cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Rebuild Page</span>
+                <span>Rebuild Canvas</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setInspectMode((v) => !v)}
-                className={`brutal-btn inline-flex items-center gap-2 px-4 py-3 rounded-xl font-mono text-xs font-black uppercase cursor-pointer ${
+                className={`brutal-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono text-xs font-bold uppercase cursor-pointer ${
                   inspectMode
                     ? "bg-zinc-950 text-[#FDE047]"
-                    : "bg-white text-zinc-950"
+                    : "bg-white text-zinc-900"
                 }`}
               >
                 <Scan className="w-3.5 h-3.5" />
@@ -101,28 +82,28 @@ export function HeroSection() {
         <SwarmBuildBlock
           id="hero-telemetry-panel"
           label="PORTRAIT_CARD"
-          accentColor="#FF5E5B"
+          accentColor="#FDE047"
           autoBuildOnMount={true}
-          delayMs={440}
+          delayMs={380}
           className="lg:col-span-4"
         >
-          <div className="h-full rounded-2xl bg-[#38BDF8] brutal-card p-5 flex flex-col justify-between gap-4">
-            <div className="relative rounded-xl overflow-hidden border-[3px] border-zinc-950 shadow-[4px_4px_0px_#09090b] aspect-[4/4.4] bg-zinc-900">
+          <div className="h-full rounded-xl bg-white brutal-card p-5 flex flex-col justify-between gap-4">
+            <div className="relative rounded-lg overflow-hidden border-2 border-zinc-900 shadow-[3px_3px_0px_#18181b] aspect-[4/4.3] bg-zinc-100">
               <img
                 src={profile.avatarUrl}
                 alt={profile.name}
-                className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#FDE047] border-2 border-zinc-950 shadow-[2px_2px_0px_#09090b] font-mono text-[11px] font-black text-zinc-950">
+              <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#FDE047] border border-zinc-900 shadow-[1.5px_1.5px_0px_#18181b] font-mono text-[10px] font-bold text-zinc-900">
                 {profile.handle}
               </div>
             </div>
 
-            <div className="bg-white border-[2.5px] border-zinc-950 rounded-xl p-3.5 shadow-[3px_3px_0px_#09090b]">
-              <div className="font-black text-base text-zinc-950">
+            <div className="bg-[#FAF8F5] border-2 border-zinc-900 rounded-lg p-3.5 shadow-[2px_2px_0px_#18181b]">
+              <div className="font-bold text-base text-zinc-900">
                 {profile.name}
               </div>
-              <div className="font-mono text-xs font-bold text-zinc-700 truncate mb-3">
+              <div className="font-mono text-xs text-zinc-600 truncate mb-3">
                 {profile.email}
               </div>
               <div className="flex items-center gap-2" data-interactive="true">
@@ -130,7 +111,7 @@ export function HeroSection() {
                   href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="brutal-btn flex-1 py-1.5 px-3 rounded-lg bg-[#FDE047] font-mono text-xs font-black text-zinc-950 flex items-center justify-center gap-1.5"
+                  className="brutal-btn flex-1 py-1.5 px-2.5 rounded-md bg-white font-mono text-xs font-bold text-zinc-900 flex items-center justify-center gap-1.5"
                 >
                   <Code2 className="w-3.5 h-3.5" />
                   <span>GitHub</span>
@@ -139,7 +120,7 @@ export function HeroSection() {
                   href={profile.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="brutal-btn flex-1 py-1.5 px-3 rounded-lg bg-[#FF5E5B] font-mono text-xs font-black text-white flex items-center justify-center gap-1.5"
+                  className="brutal-btn flex-1 py-1.5 px-2.5 rounded-md bg-[#FDE047] font-mono text-xs font-bold text-zinc-900 flex items-center justify-center gap-1.5"
                 >
                   <Globe className="w-3.5 h-3.5" />
                   <span>Instagram</span>
@@ -150,33 +131,26 @@ export function HeroSection() {
         </SwarmBuildBlock>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-7">
-        {profile.stats.map((st, idx) => {
-          const bgColors = ["#FDE047", "#4ADE80", "#C084FC", "#FF9F1C"];
-          const bg = bgColors[idx % bgColors.length];
-          return (
-            <SwarmBuildBlock
-              key={st.label}
-              id={`hero-stat-${idx}`}
-              label={`STAT_0${idx + 1}`}
-              accentColor={bg}
-              autoBuildOnMount={true}
-              delayMs={580 + idx * 100}
-            >
-              <div
-                className="rounded-xl brutal-card p-5 flex flex-col justify-between text-zinc-950"
-                style={{ backgroundColor: bg }}
-              >
-                <span className="font-mono text-xs font-black uppercase tracking-wider">
-                  {st.label}
-                </span>
-                <span className="font-mono text-2xl sm:text-3xl font-black mt-2">
-                  {st.value}
-                </span>
-              </div>
-            </SwarmBuildBlock>
-          );
-        })}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+        {profile.stats.map((st, idx) => (
+          <SwarmBuildBlock
+            key={st.label}
+            id={`hero-stat-${idx}`}
+            label={`STAT_0${idx + 1}`}
+            accentColor="#FDE047"
+            autoBuildOnMount={true}
+            delayMs={480 + idx * 80}
+          >
+            <div className="rounded-xl bg-white brutal-card p-4 sm:p-5 flex flex-col justify-between">
+              <span className="font-mono text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                {st.label}
+              </span>
+              <span className="font-mono text-2xl font-extrabold text-zinc-950 mt-1.5">
+                {st.value}
+              </span>
+            </div>
+          </SwarmBuildBlock>
+        ))}
       </div>
     </section>
   );
