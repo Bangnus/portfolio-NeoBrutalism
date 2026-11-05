@@ -33,8 +33,8 @@ export interface TechCategory {
   description: string;
   skills: {
     name: string;
-    level: string;
     detail: string;
+    badge?: string;
   }[];
 }
 

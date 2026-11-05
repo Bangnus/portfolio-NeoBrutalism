@@ -52,22 +52,18 @@ export function StackAndExperienceSection() {
                     {cat.skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="p-3 rounded-lg bg-[#FAF8F5] border border-zinc-900"
+                        className="p-3 rounded-lg bg-[#FAF8F5] border-2 border-zinc-900 shadow-[2px_2px_0px_#18181b] hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                       >
-                        <div className="flex items-center justify-between font-mono text-xs font-bold mb-1">
-                          <span className="text-zinc-900">{skill.name}</span>
-                          <span className="px-1.5 py-0.2 bg-[#FDE047] border border-zinc-900 text-zinc-950 text-[10px]">
-                            {skill.level}
-                          </span>
+                        <div className="flex items-center justify-between gap-2 font-mono text-xs font-bold mb-1">
+                          <span className="text-zinc-950">{skill.name}</span>
+                          {skill.badge && (
+                            <span className="px-2 py-0.5 bg-[#FDE047] border border-zinc-900 text-zinc-950 text-[10px] font-bold shadow-[1px_1px_0px_#18181b] uppercase">
+                              {skill.badge}
+                            </span>
+                          )}
                         </div>
-                        <div className="text-[11px] font-mono text-zinc-500 mb-2">
+                        <div className="text-[11px] font-mono text-zinc-600 leading-tight">
                           {skill.detail}
-                        </div>
-                        <div className="w-full h-1.5 bg-zinc-200 border border-zinc-800 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-zinc-950"
-                            style={{ width: skill.level }}
-                          />
                         </div>
                       </div>
                     ))}
