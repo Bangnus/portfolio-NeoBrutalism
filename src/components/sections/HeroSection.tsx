@@ -18,7 +18,7 @@ export function HeroSection() {
           label="HERO_PRIMARY_FRAME"
           accentColor="#FDE047"
           autoBuildOnMount={true}
-          delayMs={220}
+          delayMs={300}
           className="lg:col-span-8"
         >
           <div className="h-full rounded-xl bg-white brutal-card p-6 sm:p-9 flex flex-col justify-between">
@@ -84,7 +84,7 @@ export function HeroSection() {
           label="PORTRAIT_CARD"
           accentColor="#FDE047"
           autoBuildOnMount={true}
-          delayMs={380}
+          delayMs={750}
           className="lg:col-span-4"
         >
           <div className="h-full rounded-xl bg-white brutal-card p-5 flex flex-col justify-between gap-4">
@@ -139,7 +139,7 @@ export function HeroSection() {
             label={`STAT_0${idx + 1}`}
             accentColor="#FDE047"
             autoBuildOnMount={true}
-            delayMs={480 + idx * 80}
+            delayMs={1200 + idx * 280}
           >
             <div className="rounded-xl bg-white brutal-card p-4 sm:p-5 flex flex-col justify-between">
               <span className="font-mono text-xs font-bold text-zinc-500 uppercase tracking-wider">

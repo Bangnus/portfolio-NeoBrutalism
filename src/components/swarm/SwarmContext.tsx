@@ -10,7 +10,7 @@ export * from "./swarmTypes";
 const SwarmContext = createContext<SwarmContextValue | null>(null);
 
 export function SwarmProvider({ children }: { children: React.ReactNode }) {
-  const [agentCount, setAgentCountState] = useState<number>(5);
+  const [agentCount, setAgentCountState] = useState<number>(7);
   const [inspectMode, setInspectMode] = useState<boolean>(false);
   const [threeEnabled, setThreeEnabled] = useState<boolean>(false);
   const [buildGeneration, setBuildGeneration] = useState<number>(1);
@@ -48,7 +48,7 @@ export function SwarmProvider({ children }: { children: React.ReactNode }) {
           targetBlockId: null,
           targetElement: null,
           actionText: "",
-          cornerIndex: i % 5,
+          cornerIndex: i % 7,
         });
       }
     }
@@ -145,7 +145,7 @@ export function SwarmProvider({ children }: { children: React.ReactNode }) {
 
     setBuildGeneration((g) => g + 1);
     syncCounts();
-    visibleIds.forEach((id, idx) => setTimeout(() => triggerBlockBuild(id, true), 90 + idx * 140));
+    visibleIds.forEach((id, idx) => setTimeout(() => triggerBlockBuild(id, true), 90 + idx * 450));
   }, [syncCounts, triggerBlockBuild]);
 
   const instantBuildAll = useCallback(() => {

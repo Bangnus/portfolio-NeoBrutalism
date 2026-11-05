@@ -1,14 +1,11 @@
 "use client";
 
 import React from "react";
-import { RotateCcw } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
-import { useSwarm } from "../swarm/SwarmContext";
 import { SwarmBuildBlock } from "../swarm/SwarmBuildBlock";
 
 export function StudioHeader() {
   const { profile } = PORTFOLIO_DATA;
-  const { rebuildAll } = useSwarm();
 
   return (
     <header className="sticky top-0 z-30" data-interactive="true">
@@ -39,47 +36,38 @@ export function StudioHeader() {
               </div>
             </div>
 
-            <nav className="hidden md:flex items-center gap-1.5 font-mono text-xs font-semibold text-zinc-700">
+            <nav className="flex items-center gap-1 sm:gap-2 font-mono text-xs font-semibold text-zinc-700">
               <a
                 href="#hero"
-                className="px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
+                className="px-2.5 sm:px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
               >
                 01. About
               </a>
               <a
                 href="#projects"
-                className="px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
+                className="px-2.5 sm:px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
               >
                 02. Works
               </a>
               <a
                 href="#stack"
-                className="px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
+                className="hidden sm:inline-block px-2.5 sm:px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
               >
                 03. Stack
               </a>
               <a
                 href="#experience"
-                className="px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
+                className="hidden md:inline-block px-2.5 sm:px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
               >
                 04. Timeline
               </a>
               <a
                 href="#contact"
-                className="px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
+                className="px-2.5 sm:px-3 py-1.5 rounded-md hover:text-zinc-950 hover:bg-zinc-200/70 transition-colors"
               >
                 05. Contact
               </a>
             </nav>
-
-            <button
-              type="button"
-              onClick={rebuildAll}
-              className="brutal-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#FDE047] text-zinc-900 font-mono text-xs font-bold uppercase cursor-pointer"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Replay Build</span>
-            </button>
           </div>
         </div>
       </SwarmBuildBlock>

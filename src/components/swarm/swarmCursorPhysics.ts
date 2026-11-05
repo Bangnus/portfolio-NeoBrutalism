@@ -39,11 +39,18 @@ export function updateAgentsPhysicsFrame(
           laserEndX = rect.left;
           laserEndY = rect.top;
         } else if (agent.targetElement) {
-          // Other cursors dart directly onto the individual sub-elements (text, image, buttons) being typed/assembled!
+          // Cursor follows the active typing caret or inspects the sub-element
           const subRect = agent.targetElement.getBoundingClientRect();
-          const sweep = 0.2 + 0.65 * ((Math.sin(t * 7 + i * 2) + 1) * 0.5);
-          tx = subRect.left + subRect.width * sweep;
-          ty = subRect.top + subRect.height * 0.55;
+          const pValStr = agent.targetElement.dataset.buildProgress;
+          if (pValStr !== undefined) {
+            const pVal = Math.min(1, Math.max(0.04, parseFloat(pValStr)));
+            tx = subRect.left + Math.min(subRect.width - 4, subRect.width * pVal);
+            ty = subRect.top + subRect.height * 0.52;
+          } else {
+            const sweep = 0.2 + 0.6 * ((Math.sin(t * 5 + i * 2) + 1) * 0.5);
+            tx = subRect.left + subRect.width * sweep;
+            ty = subRect.top + subRect.height * 0.5;
+          }
           laserEndX = subRect.left;
           laserEndY = subRect.top;
         } else {

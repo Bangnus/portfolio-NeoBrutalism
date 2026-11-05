@@ -55,7 +55,7 @@ export function runBlockBuildStep(
   const pool = available.length >= 2 ? available : agents;
   const hash = id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
   const assigned: LiveAgentState[] = [];
-  const numToAssign = Math.min(pool.length, 5);
+  const numToAssign = Math.min(pool.length, 7);
 
   for (let i = 0; i < numToAssign; i++) {
     const picked = pool[(hash + i) % pool.length];
@@ -73,14 +73,14 @@ export function runBlockBuildStep(
     agent.state = "building";
     agent.targetBlockId = id;
     agent.targetElement = subItems[idx % subItems.length]?.el || block.element;
-    agent.cornerIndex = idx % 5;
+    agent.cornerIndex = idx % 7;
   });
 
   syncCounts();
 
   const startTime = performance.now();
-  // Slightly longer duration when there are many sub-elements so you see cursors typing/assembling each piece
-  const duration = Math.min(1850, Math.max(900, 620 + subItems.length * 95));
+  // Deliberate, readable typing duration (~3.4 - 4.2 seconds per block)
+  const duration = Math.min(4200, Math.max(3400, 3200 + subItems.length * 60));
 
   const step = (now: number) => {
     const currentBlock = blocksMap.get(id);
@@ -88,16 +88,12 @@ export function runBlockBuildStep(
 
     const elapsed = now - startTime;
     const rawProgress = Math.min(1, elapsed / duration);
-    const eased = 1 - Math.pow(1 - rawProgress, 2.4);
+    const eased = 1 - Math.pow(1 - rawProgress, 2.0);
 
     currentBlock.progress = eased;
 
     // Update sub-elements (reveal, outline, typewriter scramble) and get currently active sub-elements
-    const activeSubEls = updateSubItemsAtProgress(
-      subItems,
-      eased,
-      currentBlock.accentColor || "#FDE047"
-    );
+    const activeSubEls = updateSubItemsAtProgress(subItems, eased);
 
     // Direct each assigned cursor to a currently building sub-element!
     if (activeSubEls.length > 0) {
