@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFDF7;
+  --foreground: #09090b;
 }
 
 @theme inline {
@@ -12,15 +12,65 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Neo-Brutalist Grid Canvas Background */
+.brutal-grid-bg {
+  background-color: #FFFDF7;
+  background-image: 
+    linear-gradient(to right, rgba(9, 9, 11, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(9, 9, 11, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Neo-Brutalist Reusable Utility Classes */
+.brutal-card {
+  border: 3px solid #09090b;
+  box-shadow: 6px 6px 0px 0px #09090b;
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brutal-card-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px 0px #09090b;
+}
+
+.brutal-btn {
+  border: 2.5px solid #09090b;
+  box-shadow: 4px 4px 0px 0px #09090b;
+  transition: all 120ms ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #09090b;
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #09090b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
