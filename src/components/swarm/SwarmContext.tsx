@@ -10,7 +10,7 @@ export * from "./swarmTypes";
 const SwarmContext = createContext<SwarmContextValue | null>(null);
 
 export function SwarmProvider({ children }: { children: React.ReactNode }) {
-  const [agentCount, setAgentCountState] = useState<number>(4);
+  const [agentCount, setAgentCountState] = useState<number>(5);
   const [inspectMode, setInspectMode] = useState<boolean>(false);
   const [threeEnabled, setThreeEnabled] = useState<boolean>(false);
   const [buildGeneration, setBuildGeneration] = useState<number>(1);
@@ -48,7 +48,7 @@ export function SwarmProvider({ children }: { children: React.ReactNode }) {
           targetBlockId: null,
           targetElement: null,
           actionText: "",
-          cornerIndex: i % 4,
+          cornerIndex: i % 5,
         });
       }
     }

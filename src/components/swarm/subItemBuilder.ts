@@ -53,7 +53,7 @@ export function prepareBlockSubItems(container: HTMLElement): SubItemState[] {
       originalBg: el.style.backgroundColor || "",
       textNodes,
       status: "hidden",
-      agentIndex: idx % 4,
+      agentIndex: idx % 5,
       startAt,
       endAt,
     };

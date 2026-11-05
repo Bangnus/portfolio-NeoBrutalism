@@ -55,7 +55,7 @@ export function runBlockBuildStep(
   const pool = available.length >= 2 ? available : agents;
   const hash = id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
   const assigned: LiveAgentState[] = [];
-  const numToAssign = Math.min(pool.length, 4);
+  const numToAssign = Math.min(pool.length, 5);
 
   for (let i = 0; i < numToAssign; i++) {
     const picked = pool[(hash + i) % pool.length];
@@ -73,7 +73,7 @@ export function runBlockBuildStep(
     agent.state = "building";
     agent.targetBlockId = id;
     agent.targetElement = subItems[idx % subItems.length]?.el || block.element;
-    agent.cornerIndex = idx % 4;
+    agent.cornerIndex = idx % 5;
   });
 
   syncCounts();
